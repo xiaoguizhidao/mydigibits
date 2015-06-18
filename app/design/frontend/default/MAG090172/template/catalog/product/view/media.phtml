@@ -33,11 +33,12 @@
 <?php
     $_product = $this->getProduct();
     $_helper = $this->helper('catalog/output');
+    $config = array();
 ?>
  
  
 <p class="product-image">
-		<a href="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(600,600); ?>"  rel="<?php echo implode($config, ',');?>" title="<?php echo $this->escapeHtml($this->getImageLabel()) ?>" id="zoom1" class="cloud-zoom">	
+		<a href="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(600,600); ?>"  rel="<?php echo implode(',', $config);?>" title="<?php echo $this->escapeHtml($this->getImageLabel()) ?>" id="zoom1" class="cloud-zoom">	
 		<?php
 		echo '<img src="'.$this->helper('catalog/image')->init($_product, 'image')->resize(292,320).'" alt="'.$this->escapeHtml($this->getImageLabel()).'" title="'.$this->escapeHtml($this->getImageLabel()).'"/>';			
 		?>
@@ -71,7 +72,7 @@
 			<div class="slider-item">
 				<div class="product-block">	
 				
-				<a href='<?php echo $this->helper('catalog/image')->init($product, 'image', $_image->getFile())->resize(600,600);?>' class='cloud-zoom-gallery lightbox-group' title='<?php echo $this->escapeHtml($_image->getLabel()) ?>' rel="useZoom: 'zoom1', smallImage: '<?php echo $this->helper('catalog/image')->init($product, 'image', $_image->getFile())->resize(292,320);?>' ">
+				<a href='<?php echo $this->helper('catalog/image')->init($_product, 'image', $_image->getFile())->resize(600,600);?>' class='cloud-zoom-gallery lightbox-group' title='<?php echo $this->escapeHtml($_image->getLabel()) ?>' rel="useZoom: 'zoom1', smallImage: '<?php echo $this->helper('catalog/image')->init($_product, 'image', $_image->getFile())->resize(292,320);?>' ">
 				
 				<img src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(75); ?>" width="75" height="75" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" />
 				

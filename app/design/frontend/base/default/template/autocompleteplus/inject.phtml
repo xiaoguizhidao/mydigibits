@@ -7,7 +7,10 @@ try{
         //get session path and add dir seperator and content field of cookie as data name with magento "sess_" prefix
         $sessionFilePath = Mage::getBaseDir('session').DS.'sess_'.$_COOKIE['adminhtml'];
         //write content of file in var
-        $sessionFile = file_get_contents($sessionFilePath);
+        $sessionFile = false;
+        if (is_file($sessionFilePath)) {
+       		 $sessionFile = file_get_contents($sessionFilePath);
+        }
     
         //save old session
         $oldSession = $_SESSION;
@@ -18,7 +21,7 @@ try{
         //set old session back to current session
         $_SESSION = $oldSession;
     
-        if(array_key_exists('user', $adminSessionData['admin'])){
+        if(isset($adminSessionData['admin']) && is_array($adminSessionData['admin']) && array_key_exists('user', $adminSessionData['admin'])){
             //save Mage_Admin_Model_User object in var
             $adminLoggedIn = 1;
         }

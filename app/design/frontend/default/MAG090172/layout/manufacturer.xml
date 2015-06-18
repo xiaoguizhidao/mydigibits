@@ -34,7 +34,7 @@
 	<manufacturer_view>
 		
 		<reference name="content">
-            <block type="manufacturer/manufacturerinfo" name="brandinfo" template="manufacturer/manufacturer_info.phtml"/>
+            <block type="manufacturer/manufacturerInfo" name="brandinfo" template="manufacturer/manufacturer_info.phtml"/>
             <block type="manufacturer/product_list" name="product_list" template="catalog/product/list.phtml">
                 <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
                     <block type="page/html_pager" name="product_list_toolbar_pager"/>
