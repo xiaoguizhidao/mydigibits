@@ -1,0 +1,362 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   EM
+ * @package    EM_Blog
+ * @author     Emthemes
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <EM_Blog>
+            <version>1.0.0</version>
+        </EM_Blog>
+    </modules>
+    <frontend>
+        <routers>
+            <blog>
+                <use>standard</use>
+                <args>
+                    <module>EM_Blog</module>
+                    <frontName>blog</frontName>
+                </args>
+            </blog>
+        </routers>
+        <layout>
+            <updates>
+                <blog>
+                    <file>em_blog.xml</file>
+                </blog>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <EM_Blog>
+                    <files>
+                        <default>EM_Blog.csv</default>
+                    </files>
+                </EM_Blog>
+            </modules>
+        </translate>
+    </frontend>
+    <!--<admin>
+        <routers>
+            <blog>
+                <use>admin</use>
+                <args>
+                    <module>EM_Blog</module>
+                    <frontName>blog</frontName>
+                </args>
+            </blog>
+        </routers>
+    </admin>-->
+    <adminhtml>
+        <translate>
+            <modules>
+                <EM_Blog>
+                    <files>
+                        <default>EM_Blog.csv</default>
+                    </files>
+                </EM_Blog>
+            </modules>
+        </translate>
+
+        <menu>
+            <cms module="blog">
+                <children>
+                    <comment_manager module="blog">
+                        <title>Manage Comments</title>
+                        <sort_order>30</sort_order>
+                        <action>blog/adminhtml_comment</action>
+                    </comment_manager>
+                    <tag_manager module="blog">
+                        <title>Manage Tags</title>
+                        <sort_order>30</sort_order>
+                        <action>blog/adminhtml_tag</action>
+                    </tag_manager>
+                    <post_manager module="blog">
+                        <title>Manage Posts</title>
+                        <sort_order>30</sort_order>
+                        <action>blog/adminhtml_post</action>
+                    </post_manager>
+                    <category_manager module="blog">
+                        <title>Manage Categories</title>
+                        <sort_order>30</sort_order>
+                        <action>blog/adminhtml_category/edit</action>
+                    </category_manager>
+               </children>
+            </cms>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+						<cms translate="title" module="blog">
+							<children>
+								<comment_manager translate="title">
+									<title>Manage Comments</title>
+								</comment_manager>
+								<tag_manager translate="title">
+									<title>Manage Tags</title>
+								</tag_manager>
+								<post_manager translate="title">
+									<title>Manage Posts</title>
+								</post_manager>
+								<category_manager translate="title">
+									<title>Manage Categories</title>
+								</category_manager>
+							</children>
+						</cms>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <blog translate="title" module="blog">
+                                            <title>EM Blog Pro</title>
+                                        </blog>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                    
+                </admin>
+            </resources>
+        </acl>
+        <layout>
+            <updates>
+                <blog>
+                    <file>em_blog.xml</file>
+                </blog>
+            </updates>
+        </layout>
+    </adminhtml>   
+    <global>
+        <models>
+            <blog>
+                <class>EM_Blog_Model</class>
+                <resourceModel>blog_resource</resourceModel>
+            </blog>
+            <blog_resource>
+                <class>EM_Blog_Model_Resource</class>
+				<deprecatedNode>blog_mysql4</deprecatedNode>
+                <entities>
+                    <post>
+                        <table>blog_post_entity</table>
+                    </post>
+					<post_entity_varchar>
+                        <table>blog_post_entity_varchar</table>
+                    </post_entity_varchar>
+                    <post_entity_text>
+                        <table>blog_post_entity_text</table>
+                    </post_entity_text>
+                    <post_entity_int>
+                        <table>blog_post_entity_int</table>
+                    </post_entity_int>
+					<post_entity_datetime>
+                        <table>blog_post_entity_datetime</table>
+                    </post_entity_datetime>
+					<category>
+						<table>blog_category_entity</table>
+					</category>
+					<category_entity_varchar>
+                        <table>blog_category_entity_varchar</table>
+                    </category_entity_varchar>
+                    <category_entity_text>
+                        <table>blog_category_entity_text</table>
+                    </category_entity_text>
+                    <category_entity_int>
+                        <table>blog_category_entity_int</table>
+                    </category_entity_int>
+					<category_entity_datetime>
+                        <table>blog_category_entity_datetime</table>
+                    </category_entity_datetime>
+					<category_post>
+                        <table>blog_category_post</table>
+                    </category_post>
+					<category_post_index>
+                        <table>blog_category_post_index</table>
+                    </category_post_index>
+					<post_link_type>
+                        <table>blog_post_link_type</table>
+                    </post_link_type>
+                    <post_link>
+                        <table>blog_post_link</table>
+                    </post_link>
+					<post_link_attribute>
+                        <table>blog_post_link_attribute</table>
+                    </post_link_attribute>
+                    <post_link_attribute_int>
+                        <table>blog_post_link_attribute_int</table>
+                    </post_link_attribute_int>
+					<category_post_index>
+                        <table>blog_category_post_index</table>
+                    </category_post_index>
+					<eav_attribute>
+                        <table>blog_eav_attribute</table>
+                    </eav_attribute>
+					<tag>
+						<table>blog_tag</table>
+					</tag>
+					<tag_post>
+						<table>blog_tag_post</table>
+					</tag_post>
+					<comment>
+						<table>blog_comment</table>
+					</comment>
+					<url>
+						<table>blog_url_rewrite</table>
+					</url>
+                    <!--<comment><table>blog_comment</table></comment>
+                    <post><table>blog_post</table></post>
+                    <tag><table>blog_tag</table></tag>
+                    <post_store><table>blog_post_store</table></post_store>
+                    <tag_post><table>blog_tag_post</table></tag_post>
+                    <category><table>blog_category</table></category>
+                    <cat_post><table>blog_category_post</table></cat_post>
+                    <blogurl><table>blog_url_rewrite</table></blogurl>
+                    <cat_store><table>blog_cat_store</table></cat_store>-->
+                </entities>
+            </blog_resource>
+			<!--<url>
+				<class>EM_Blog_Model</class>
+                <resourceModel>blog_mysql4</resourceModel>
+			</url>
+			<blog_mysql4>
+                <class>EM_Blog_Model_Mysql4</class>
+                <entities>
+                    <url><table>blog_url_rewrite</table></url>
+                </entities>
+            </blog_mysql4>-->
+            <!--<sitemap>
+                <rewrite>
+                    <sitemap>EM_Blog_Model_Sitemap</sitemap>
+                </rewrite>
+            </sitemap>-->
+        </models>
+        <resources>
+            <blog_setup>
+                <setup>
+                    <module>EM_Blog</module>
+					<class>EM_Blog_Model_Resource_Setup</class>
+                </setup>
+            </blog_setup>
+            <blog_write>
+                <connection>
+                    <use>default_write</use>
+                </connection>
+            </blog_write>
+            <blog_read>
+                <connection>
+                    <use>default_read</use>
+                </connection>
+            </blog_read>
+        </resources>
+        <blocks>
+            <blog>
+                <class>EM_Blog_Block</class>
+            </blog>
+        </blocks>
+        <helpers>
+            <blog>
+                <class>EM_Blog_Helper</class>
+            </blog>
+        </helpers>
+		<index>
+            <indexer>
+                <blog_category_post>
+                    <model>blog/category_indexer_post</model>
+                </blog_category_post>
+            </indexer>
+        </index>
+        <events>
+            <controller_front_init_routers>
+                <observers>
+                    <blog>
+                        <type>singleton</type>
+                        <class>EM_Blog_Controller_Router</class>
+                        <method>initControllerRouters</method>
+                    </blog>
+                </observers>
+            </controller_front_init_routers>
+        </events>
+        <template>
+            <email>
+                <blog_comments_email_template translate="label" module="blog">
+                    <label>Comment Submitted</label>
+                    <file>em_blog/comment_submitted.html</file>
+                    <type>text</type>
+                </blog_comments_email_template>
+            </email>
+        </template>
+    </global>
+    <default>
+        <sitemap>
+                <blog>
+                        <changefreq>weekly</changefreq>
+                        <priority>0.5</priority>
+
+                </blog>
+        </sitemap>
+        <blog>
+            <info>
+                <maxsize>32</maxsize>
+                <minsize>12</minsize>
+            	<pagesize>2</pagesize>
+                <enabled>1</enabled>
+                <title>Blog</title>
+                <thumbnail_width>100</thumbnail_width>
+                <thumbnail_height>100</thumbnail_height>
+				<recent_thumbnail_width>62</recent_thumbnail_width>
+                <recent_thumbnail_height>62</recent_thumbnail_height>
+                <footerEnabled>1</footerEnabled>
+                <menuRight>1</menuRight>
+                <topEnabled>1</topEnabled>
+                <blogcrumbs>1</blogcrumbs>
+                <limit_recent_post>5</limit_recent_post>
+                <dateformat>full</dateformat>
+                <layout>page/2columns-right.phtml</layout>
+                <comments>1</comments>
+                <show_comment_pending>0</show_comment_pending>
+                <limit_comment_pagination>3</limit_comment_pagination>
+             
+                <limit_comment_recent>5</limit_comment_recent>
+                <page_title>EM Blog</page_title>
+                <root_id>1</root_id>
+                <root_category_id>2</root_category_id>
+            </info>
+
+            <recaptcha>
+                <enable_recapcha>1</enable_recapcha>
+                <public_key></public_key>
+                <private_key></private_key>
+            </recaptcha>
+            <rss>
+                 <rss_enable>1</rss_enable>
+                 <rssimage>em_blog/images/i_block-blog.gif</rssimage>
+            </rss>
+            <menu>
+                <show_recent_post>1</show_recent_post>
+                <show_recent_comment>1</show_recent_comment>
+                <show_menu_right>1</show_menu_right>
+                <category>1</category>
+                <tagcloud_size>10</tagcloud_size>
+                <tag_display>10</tag_display>
+            </menu>
+
+            <comments>
+                <auto_approved>1</auto_approved>
+                <auto_approved_login>1</auto_approved_login>
+            </comments>
+			
+            <wysiwyg>
+                <enabled>enabled</enabled>
+            </wysiwyg>
+        
+        </blog>
+    </default>    
+</config>

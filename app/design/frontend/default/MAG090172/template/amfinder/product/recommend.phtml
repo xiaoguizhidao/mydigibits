@@ -1,0 +1,58 @@
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<?php $_collection = $this->getCollection(); ?>
+<div class="amfinder-recommend">
+    <div class="block-title">
+        <strong><?php echo $this->__('Recommend Products for ')?><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></strong>
+    </div>
+    <div class="recommend-list">
+        <ul class="products-list bxslider">
+        <?php foreach($_collection as $product): ?>
+            <?php $_product = Mage::getModel('catalog/product')->load($product->getId()) ?>
+            <li class="item">
+                <div class="list-left">
+                    <?php if($this->helper('framework')->isNewProduct($_product)):?>
+                        <div class="new-label"><?php echo $this->__('New') ?></div>
+                    <?php endif; ?>
+
+                    <?php if($this->helper('framework')->isSpecialProduct($_product)):?>
+
+                        <div class="sale-label"><?php echo $this->__('Sale') ?></div>
+                    <?php endif; ?>
+
+                    <?php // Product Image ?>
+                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(165); ?>" width="60" height="60" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+                </div>
+
+                <div class="list-center">
+                     <div class="product-name">
+                        <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h2>
+                    </div>
+                </div>
+
+                <div class="list-right">
+                    <?php echo $this->getPriceHtml($_product, true) ?>
+                    <?php if($_product->isSaleable()): ?>
+                        <p><button type="button" title="<?php echo $this->__('Buy') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Buy') ?></span></span></button></p>
+                    <?php else: ?>
+                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                    <?php endif; ?>
+                </div>
+
+            </li>
+        <?php endforeach ?>
+        </ul>
+    </div>
+</div>
+
+<script>
+    $k(document).ready(function(){
+        $k('.bxslider').bxSlider({
+          mode: 'vertical',
+          minSlides: 5,
+          maxSlides : 5,
+          slideMargin: 5
+        });
+    });
+
+  </script>

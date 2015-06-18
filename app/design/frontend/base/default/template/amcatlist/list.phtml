@@ -1,0 +1,17 @@
+<div class="product-essential">
+    <?php if ($title = $this->getTitle()): ?>
+        <div class="amcatlist_title"><?php echo $title; ?></div>
+    <?php endif; ?>
+    <table width="100%">
+        <tr>
+            <?php $row = 1; ?>
+            <?php foreach ($this->getCategories() as $cat): ?>
+                <td width="<?php echo round(100 / $this->getColumnsNumber()) ?>%"><div class="amcatlist_category"><a href="<?php echo $cat['url']; ?>"><?php echo $cat['title']; ?></a></div></td>
+                <?php if ($row % $this->getColumnsNumber() == 0): ?>
+                    </tr><tr>
+                <?php endif; ?>
+                <?php $row++; ?>
+            <?php endforeach; ?>
+        </tr>
+    </table>
+</div>

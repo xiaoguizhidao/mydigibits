@@ -1,0 +1,16 @@
+<div id="configurator">
+<?php
+	$productFound = false;
+	if(isset($_GET['prod'])){
+		$kingstonId = $_GET['prod'];
+		$_product = Mage::getModel('catalog/product')->loadByAttribute('sku', $kingstonId);
+		if($_product) { $productFound = true; }
+	}
+?>
+
+<?php if($productFound){ echo $this->getLayout()->createBlock('cms/block')->setBlockId('configurator_message_success')->toHtml(); ?>	
+		<script type="text/javascript"> jQuery(window).load(function(){ window.location.replace("<?php echo $_product->getProductUrl(); ?>"); }); </script>
+<?php } ?>
+
+<?php if(!$productFound){ echo $this->getLayout()->createBlock('cms/block')->setBlockId('configurator_message_fail')->toHtml(); } ?>
+</div>

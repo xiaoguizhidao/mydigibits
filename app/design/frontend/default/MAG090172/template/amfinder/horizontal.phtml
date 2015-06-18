@@ -1,0 +1,43 @@
+<?php $finderId = 'amfinder_' . uniqid(); ?>
+<form method="post" action="<?php echo $this->getActionUrl() ?>" class="amfinder-form">
+	<input type="hidden" name="finder_id" value="<?php echo $this->getId() ?>">
+	<input type="hidden" name="back_url" value="<?php echo $this->getBackUrl() ?>">
+	<input type="hidden" name="category_id" value="<?php echo $this->getCurrentCategoryId() ?>">
+	<div class="amfinder-horizontal" id="<?php echo $finderId ?>Container">
+        <?php $index = 0; ?>
+	<?php foreach ($this->getFinder()->getDropdowns() as $dropdown): ?>
+        <?php $index++ ?>
+        <div class="finder-element">
+            <div class="selector-title"><?php if($index == 1){echo "<span>Looking To Upgrade Memory?</span>";} ?>Select Your <?php echo $this->htmlEscape($dropdown->getName()) ?></div>
+            <div class="search-box"><input type="text" name="search-selector" class="search-selector" placeholder="Filter By Model"></div>
+            <dl class="selector-elements" <?php echo $this->getDropdownAttributes($dropdown)?>>
+                <?php foreach ($this->getDropdownValues($dropdown) as $v): ?>
+                    <?php if($v['value'] != 0): ?>
+                    <dd class="element">
+                        <p class="amfinder-item" data-item-value="<?php echo $v['value'] ?>" finder-id="<?php echo $dropdown->getData('dropdown_id') ?>"><img src="<?php echo Mage::getUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'amfinder/' . strtolower($this->htmlEscape($dropdown->getName())). '/' . strtolower($this->htmlEscape($v['label'])).'.png' ?>" data-item-value="<?php echo $v['value'] ?>" finder-id="<?php echo $dropdown->getData('dropdown_id') ?>" /></p>
+                        <label data-item-value="<?php echo $v['value'] ?>" finder-id="<?php echo $dropdown->getData('dropdown_id') ?>"><?php echo $this->htmlEscape($v['label']) ?></label>
+                    </dd>
+                    <?php endif; ?>
+                <?php endforeach ?>
+            </dl>
+            <input type="hidden" class="finder_<?php echo $dropdown->getData('dropdown_id') ?>" name="finder[<?php echo $dropdown->getData('dropdown_id') ?>]" value="">
+            <div class="clearfix"></div>
+        </div>
+    <?php endforeach ?>
+    <br />
+    <div class="amfinder-buttons" style="display:<?php //echo ($this->isButtonsVisible() ? 'block' : 'none')?>">
+        <button class="button" title="<?php echo $this->__('Find') ?>" type="submit"><span><span><?php echo $this->__('Find') ?></span></span></button>
+        <button class="button" name="reset" value="1" title="<?php echo $this->__('Reset') ?>" type="submit"><span><span><?php echo $this->__('Reset') ?></span></span></button>
+    </div>
+	</div>
+</form>
+<script type="text/javascript">
+    var <?php echo $finderId ?>  = new amFinderHorizontal(
+        '<?php echo $finderId ?>Container',
+        '<?php echo $this->getAjaxUrl() ?>',
+        '<?php echo $this->__('Loading...')?>',
+        '<?php echo Mage::getStoreConfig('amfinder/general/partial_search')?>',
+        <?php echo intval(Mage::getStoreConfig('amfinder/general/auto_submit')) ?>
+    );
+</script>
+<br />

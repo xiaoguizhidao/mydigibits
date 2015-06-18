@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * Anais_Accessories extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Anais
+ * @package    Anais_Accessories
+ * @copyright  Copyright (c) 2011 Anais Software Services
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */ 
+ /**
+ * @category   Anais
+ * @package    Anais_Accessories
+ * @author     Marius Strajeru <marius.strajeru@anais-it.com>
+ */ 
+ -->
+ <config>
+	<modules>
+    	<Anais_Accessories>
+        	<version>0.1.0</version>
+      	</Anais_Accessories>
+    </modules>
+    <global>
+    	<models>
+    		<accessories>
+    			<class>Anais_Accessories_Model</class>
+    		</accessories>
+    		<catalog>
+    			<rewrite>
+    				<product>Anais_Accessories_Model_Product</product>
+    				<product_link>Anais_Accessories_Model_Product_Link</product_link>
+    			</rewrite>
+    		</catalog>
+    	</models>
+    	<blocks>
+    		<accessories>
+    			<class>Anais_Accessories_Block</class>
+    		</accessories>
+    		<adminhtml>
+				<rewrite>
+					<catalog_product_edit_tabs>Anais_Accessories_Block_Adminhtml_Catalog_Product_Edit_Tabs</catalog_product_edit_tabs>
+					<catalog_product_edit_tab_accessories>Anais_Accessories_Block_Adminhtml_Catalog_Product_Edit_Tab_Accessories</catalog_product_edit_tab_accessories>
+				</rewrite>
+			</adminhtml>
+    	</blocks>
+    	<helpers>
+    		<accessories>
+    			<class>Anais_Accessories_Helper</class>
+    		</accessories>
+    	</helpers>
+    	<resources>
+            <anais_accessories_setup>
+                <setup>
+                    <module>Anais_Accessories</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+            </anais_accessories_setup>
+        </resources>
+    </global>
+    <frontend>
+    	<layout>
+            <updates>
+                <anais_accessories>
+                    <file>anais_accessories.xml</file>
+                </anais_accessories>
+            </updates>
+        </layout>
+        <translate>
+	        <modules>
+	            <Anais_Accessories>
+	                <files>
+	                    <default>Anais_Accessories.csv</default>
+	                </files>
+	            </Anais_Accessories>
+	        </modules>
+	    </translate>
+    </frontend>
+    <admin>
+	 	 <routers>
+	 	 	 <adminhtml>
+	 	 	 	 <args>
+	 	 	 	 	 <modules>
+	 	 	 	 	 	 <Anais_Accessories before="Mage_Adminhtml">Anais_Accessories_Adminhtml</Anais_Accessories>
+	 	 	 	 	 </modules>
+	 	 	 	 </args>
+	 	 	 </adminhtml>
+	 	 </routers>
+	 </admin>
+    <adminhtml>
+   		<layout>
+            <updates>
+                <anais_accessories>
+                    <file>anais_accessories.xml</file>
+                </anais_accessories>
+            </updates>
+        </layout>
+        <events>
+   			<catalog_product_prepare_save>
+   				<observers>
+                    <accessories_adminhtml_before_product_save>
+                        <class>accessories/observer</class>
+                        <method>beforeProductSave</method>
+                    </accessories_adminhtml_before_product_save>
+                </observers>
+   			</catalog_product_prepare_save>
+   		</events>
+   		<translate>
+	        <modules>
+	            <Anais_Accessories>
+	                <files>
+	                    <default>Anais_Accessories.csv</default>
+	                </files>
+	            </Anais_Accessories>
+	        </modules>
+	    </translate>
+    </adminhtml>
+</config>

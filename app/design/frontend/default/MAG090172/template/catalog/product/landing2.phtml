@@ -1,0 +1,47 @@
+<?php $_categories = $this->getCurrentChildCategories() ?>
+<?php $_collectionSize = $_categories->count() ?>
+
+<div class="subcategory-grid">
+    <div class="title-bar">
+        <span><span><?php echo $this->__('Sub-Categories') ?></span></span>
+    </div>
+    <div class="category-list">
+        <ul class="category_grid list-grid">
+        <?php $i=0; foreach ($_categories as $_category): ?>
+
+        <?php
+            $layer = Mage::getSingleton('catalog/layer');
+            $layer->setCurrentCategory(Mage::getModel('catalog/category')->load($_category->getId()));
+            $helper = Mage::helper('catalog/category');
+        ?>
+            <div class="category-container<?php if($i % 3 == 0){ echo ' first'; } if($i >= 3){ echo ' additional-rows'; }?>">
+                <li>
+                <?php $_img = $this->getCurrentCategory()->getImageUrl() ?>
+                <?php if($_img){ ?>
+                    <div class="category-img">
+                        <a href="<?php echo $helper->getCategoryUrl($_category);?>">
+                            <img src="<?php echo $_img?>" title="<?php echo $_category->getName() ?>" width="80" height="80"/>
+                        </a>
+                <?php }else{ ?>
+                    <div class="category-img">
+                        <a href="<?php echo $helper->getCategoryUrl($_category);?>">
+                            <img style="width:150px;" src="/skin/frontend/default/MAG090172/images/much_soon.png" title="<?php echo $_category->getName() ?>"/>
+                        </a>
+                <?php } ?>
+                    <span style="display:block;clear:both;"></span>
+                    <a href="<?php echo $_category->getURL() ?>" title="<?php echo $this->htmlEscape($_category->getName()) ?>">
+                    <?php echo $this->htmlEscape($_category->getName()) ?>
+                    </a>
+                </div>
+                </li>
+            </div>
+        <?php
+            $i++;
+            endforeach;
+        ?>
+        </ul>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+<?php if(Mage::registry('current_category')){$layer->setCurrentCategory(Mage::registry('current_category'));} ?>

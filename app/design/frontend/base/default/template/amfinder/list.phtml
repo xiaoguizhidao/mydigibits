@@ -1,0 +1,223 @@
+<?php
+$_helper = $this->helper('catalog/output');
+
+if(!Mage::registry('amfinder_final_result')) {
+    $_productCollection = $this->getLoadedProductCollection();
+}else{
+    $_product = Mage::registry('current_product');
+
+    $cardTypes = $_product->getAttributeText('card_type');
+    
+    $capacity = $_product->getAttributeText('capacity');
+    if($capacity{strlen($capacity)-2} == 'T'){
+        $capacity = substr($capacity, 0, strlen($capacity)-2) * 1024;
+    }
+    else{
+        $capacity = substr($capacity, 0, strlen($capacity)-2);
+    }
+    
+    $attr = Mage::getModel('catalog/product')->getResource()->getAttribute("card_type");
+    if(is_array($cardTypes)){
+        foreach ($cardTypes as $cardType) {
+            if ($attr->usesSource()) {
+                $types[] = $attr->getSource()->getOptionId($cardType);
+            }
+        }
+    }else{
+        $type = $attr->getSource()->getOptionId($cardTypes);
+    }
+    
+    if(is_null($types)){
+        $types = "null";
+    }
+    
+    $attribute = Mage::getModel('eav/config')->getAttribute('catalog_product', 'capacity');
+    foreach ($attribute->getSource()->getAllOptions(true, true) as $instance) {
+        if($instance['value']){
+            $capVal = substr($instance['label'], 0, strlen($instance['label'])-2);
+            if($instance['label']{strlen($instance['label'])-2} == 'T'){
+                $capVal = $capVal * 1024;
+            }
+            
+            if($capVal <= $capacity){
+                $options[] = $instance['value'];
+            }
+        }
+    }
+    
+    if(is_null($options)){
+        $options[] = "null";
+    }
+    
+    if(is_array($types) && is_array($options)){
+        $_productCollection = Mage::getModel('catalog/product')->getCollection()
+                        ->addAttributeToSelect('*')
+                        ->addAttributeToFilter('attribute_set_id', array('neq' => $_product->getAttributeSetId()))
+                        ->addAttributeToFilter('card_type', array('in' => $types))
+                        ->addAttributeToFilter('capacity', array('in' => $options));
+    }
+    elseif(!is_null($type) && is_array($options)){
+        $_productCollection = Mage::getModel('catalog/product')->getCollection()
+                        ->addAttributeToSelect('*')
+                        ->addAttributeToFilter('attribute_set_id', array('neq' => $_product->getAttributeSetId()))
+                        ->addAttributeToFilter('card_type', $type)
+                        ->addAttributeToFilter('capacity', array('in' => $options));
+    }
+    elseif(is_array($type) && !is_null($options)){
+        $_productCollection = Mage::getModel('catalog/product')->getCollection()
+                        ->addAttributeToSelect('*')
+                        ->addAttributeToFilter('attribute_set_id', array('neq' => $_product->getAttributeSetId()))
+                        ->addAttributeToFilter('card_type', array('in' => $types))
+                        ->addAttributeToFilter('capacity', $options);
+    }
+    elseif(!is_null($type) && !is_null($options)){
+        $_productCollection = Mage::getModel('catalog/product')->getCollection()
+                        ->addAttributeToSelect('*')
+                        ->addAttributeToFilter('attribute_set_id', array('neq' => $_product->getAttributeSetId()))
+                        ->addAttributeToFilter('card_type', $type)
+                        ->addAttributeToFilter('capacity', $options);
+    }
+    //var_dump($_productCollection->getSelect()->assemble());
+}
+?>
+<?php if(!$_productCollection->count()): ?>
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+<div class="category-products">
+    <?php echo $this->getToolbarHtml() ?>
+    <?php // List mode ?>
+    <?php if($this->getMode()!='grid'): ?>
+    <?php $_iterator = 0; ?>
+    <ul class="products-list" id="products-list" >
+    <?php foreach ($_productCollection as $_product): ?>
+        <li class="item<?php if( ++$_iterator == sizeof($_productCollection) ): ?> last<?php endif; ?>">
+        <div class="list-left">
+            
+            <?php if($this->helper('framework')->isNewProduct($_product)):?>
+                <div class="new-label"><?php echo $this->__('New') ?></div>
+            <?php endif; ?>
+                
+            <?php if($this->helper('framework')->isSpecialProduct($_product)):?>
+                <div class="sale-label"><?php echo $this->__('Sale') ?></div>
+            <?php endif; ?>
+                
+                
+            <?php // Product Image ?>
+            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(165); ?>" width="165" height="165" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+        </div>
+        
+        <div class="list-center">
+            <?php // Product description ?>
+            <div class="product-shop">
+                <div class="f-fix">
+                    <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+                    <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>"><?php echo $_helper->productAttribute($_product, $_product->getName() , 'name'); ?></a></h2>
+                    <?php if(Mage::registry('amfinder_final_result')): ?>
+                        <?php if($_product->getRatingSummary()): ?>
+                        <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                   
+                    <div class="desc std">
+                        <?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped ?>" class="link-learn"><?php echo $this->__('Learn More') ?></a>
+                    </div>
+                    <?php if(Mage::registry('amfinder_final_result')): ?>
+                     <ul class="add-to-links">
+                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                            <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                        <?php endif; ?>
+                        <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                            <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                        <?php endif; ?>
+                    </ul>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+            
+        <div class="list-right">
+          <?php echo $this->getPriceHtml($_product, true) ?>
+          <?php if($_product->isSaleable()): ?>
+            <p><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
+            <?php else: ?>
+             <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+           <?php endif; ?>
+        </div>
+        
+        </li>
+    <?php endforeach; ?>
+    </ul>
+     
+
+    <?php else: ?>
+
+    <?php // Grid Mode 
+    ?>
+    <?php $_collectionSize = $_productCollection->count() ?> 
+        <ul class="products-grid" id="grid"> 
+         <?php $i=0; foreach ($_productCollection as $_product): ?>         
+           <li class="item">
+                <div class="product-block">
+                <div class="product-block-inner">
+                
+                <?php if($this->helper('framework')->isNewProduct($_product)):?>
+                    <div class="new-label"><?php echo $this->__('New') ?></div>
+                <?php endif; ?>
+                
+                <?php if($this->helper('framework')->isSpecialProduct($_product)):?>
+                    <div class="sale-label"><?php echo $this->__('Sale') ?></div>
+                <?php endif; ?>
+                
+                <?php if(Mage::registry('amfinder_final_result')): ?>
+                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(165); ?>" width="165" height="165" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+                
+                <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
+                </h2>
+                <?php else: ?>
+                <a href="<?php //echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(165); ?>" width="165" height="165" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+                
+                <h2 class="product-name"><a href="<?php //echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a>
+                </h2>
+                <?php endif; ?>
+                
+                <?php if(Mage::registry('amfinder_final_result')): ?>
+                    <?php if($_product->getRatingSummary()): ?>
+                    <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                    <?php endif; ?>
+                
+                
+                    <?php echo $this->getPriceHtml($_product, true) ?>
+                
+                    <div class="actions">
+                        <?php if($_product->isSaleable()): ?>
+                            <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                        <?php else: ?>
+                            <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                        <?php endif; ?>
+                        <ul class="add-to-links">
+                            <?php if ($this->helper('wishlist')->isAllow()) : ?>
+                                <li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+                            <?php endif; ?>
+                            <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+                                <li><span class="separator">|</span> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+                            <?php endif; ?>
+                        </ul>
+                        </div>
+                <?php endif; ?>
+                    
+                </div><!-- End div class product-block-->
+                </div><!-- End div class product-block-inner -->
+            </li>
+        <?php endforeach ?>
+        </ul> 
+            
+       
+    <?php endif; ?>
+
+    <div class="toolbar-bottom">
+        <?php echo $this->getToolbarHtml() ?>
+    </div>
+    <span style="display: none; visibility: hidden;" class="grid_default_width"></span>
+</div>
+<?php endif; ?>

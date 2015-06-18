@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/**
+ * Anais_Accessories extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Anais
+ * @package    Anais_Accessories
+ * @copyright  Copyright (c) 2011 Anais Software Services
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */ 
+ /**
+ * @category   Anais
+ * @package    Anais_Accessories
+ * @author     Marius Strajeru <marius.strajeru@anais-it.com>
+ */ 
+ -->
+<layout>
+	<adminhtml_catalog_product_accessories>
+        <block type="core/text_list" name="root">
+            <block type="adminhtml/catalog_product_edit_tab_accessories" name="catalog.product.edit.tab.accessories"/>
+            <block type="adminhtml/widget_grid_serializer" name="accessories_grid_serializer">
+                <reference name="accessories_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>catalog.product.edit.tab.accessories</grid_block_name>
+                        <data_callback>getSelectedAccessoriesProducts</data_callback>
+                        <hidden_input_name>links[accessories]</hidden_input_name>
+                        <reload_param_name>products_accessories</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_catalog_product_accessories>
+    <adminhtml_catalog_product_accessoriesgrid>
+        <block type="core/text_list" name="root">
+            <block type="adminhtml/catalog_product_edit_tab_accessories" name="catalog.product.edit.tab.accessories"/>
+        </block>
+    </adminhtml_catalog_product_accessoriesgrid> 
+</layout>

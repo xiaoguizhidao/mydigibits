@@ -1,0 +1,7 @@
+<?php if(Mage::registry('current_cat')):?>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo Mage::getUrl('blog/rss',array('cat'=>Mage::helper('core')->urlEncode(Mage::registry('current_cat')->getId())))?>" />
+<?php elseif($tagId = $this->getRequest()->getParam('tag_id')):?>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo Mage::getUrl('blog/rss',array('tag_id'=>  Mage::helper('core')->urlEncode($tagId)))?>" />
+<?php else:?>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo Mage::getUrl('blog/rss')?>" />
+<?php endif;?>

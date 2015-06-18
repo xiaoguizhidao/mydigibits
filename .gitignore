@@ -1,0 +1,7 @@
+/var/*
+/media/*
+/downloader/pearlib/cache/*
+/downloader/pearlib/download/*
+/app/etc/use_cache.ser
+/app/etc/local.xml
+/errors/local.xml

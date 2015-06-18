@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <block name="inject" template="autocompleteplus/inject.phtml" type="core/template"></block>
+        </reference>
+    </default>
+    <default>
+        <reference name="head">
+            <block type="autocompleteplus_autosuggest/autocomplete" />
+        </reference>
+    </default>
+<!--
+   	<catalogsearch_result_index>
+		<reference name="content">
+			<block type="autocompleteplus_autosuggest/autocorrection" />
+		</reference>
+	</catalogsearch_result_index>-->
+
+</layout>

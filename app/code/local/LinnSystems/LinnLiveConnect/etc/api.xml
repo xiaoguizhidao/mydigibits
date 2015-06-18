@@ -1,0 +1,264 @@
+<?xml version="1.0"?>
+<config>
+  <api>
+    <resources>
+      <linnLive translate="title" module="linnLiveConnect">
+        <title>LinnLive connect module</title>
+        <model>linnLiveConnect/api</model>
+        <methods>
+          <productAttributeOptions translate="title" module="linnLiveConnect">
+            <title>Get attributes by attribute set ID</title>
+            <acl>linnLive/attributeOptions</acl>
+          </productAttributeOptions>
+          <storesList translate="title" module="linnLiveConnect">
+            <title>Retrieve list of installed stores</title>
+            <acl>linnLive/storesList</acl>
+          </storesList>
+          <getStoreCode translate="title" module="linnLiveConnect">
+            <title>Get current store code</title>
+            <acl>linnLive/getStoreCode</acl>
+          </getStoreCode>
+          <productList translate="title" module="linnLiveConnect">
+            <title>Retrieve products list by filters</title>
+            <acl>linnLive/productList</acl>
+          </productList>
+          <getProductStoreURL translate="title" module="linnLiveConnect">
+            <title>Get product URL from Magento</title>
+            <acl>linnLive/getProductStoreURL</acl>
+          </getProductStoreURL>
+          <updatePriceBulk translate="title" module="linnLiveConnect">
+            <title>Update products in bulk</title>
+            <acl>linnLive/updateBulk</acl>
+          </updatePriceBulk>
+          <getGeneralInfo translate="title" module="linnLiveConnect">
+            <title>Get information about current magento settings</title>
+            <acl>linnLive/getGeneralInfo</acl>
+          </getGeneralInfo>
+          <checkProducts translate="title" module="linnLiveConnect">
+            <title>Check product sku</title>
+            <acl>linnLive/checkProducts</acl>
+          </checkProducts>
+          <createSimpleProducts translate="title" module="linnLiveConnect">
+            <title>Bulk create products</title>
+            <acl>linnLive/createSimpleProducts</acl>
+          </createSimpleProducts>
+          <createConfigurableProducts translate="title" module="linnLiveConnect">
+            <title>Bulk create configurable products</title>
+            <acl>linnLive/createConfigurableProducts</acl>
+          </createConfigurableProducts>
+          <updateSimpleProducts translate="title" module="linnLiveConnect">
+            <title>Bulk update products</title>
+            <acl>linnLive/updateSimpleProducts</acl>
+          </updateSimpleProducts>
+          <updateConfigurableProducts translate="title" module="linnLiveConnect">
+            <title>Bulk update configurable products</title>
+            <acl>linnLive/updateConfigurableProducts</acl>
+          </updateConfigurableProducts>
+          <deleteProducts translate="title" module="linnLiveConnect">
+            <title>Bulk delete products</title>
+            <acl>linnLive/deleteProducts</acl>
+          </deleteProducts>
+          <createRelatedProducts translate="title" module="linnLiveConnect">
+            <title>Bulk create related products</title>
+            <acl>linnLive/createRelatedProducts</acl>
+          </createRelatedProducts>
+          <deleteRelatedProducts translate="title" module="linnLiveConnect">
+            <title>Bulk delete related products</title>
+            <acl>linnLive/deleteRelatedProducts</acl>
+          </deleteRelatedProducts>
+          <createProductImages translate="title" module="linnLiveConnect">
+            <title>Bulk create product images</title>
+            <acl>linnLive/createProductImages</acl>
+          </createProductImages>
+          <createProductImagesByPath translate="title" module="linnLiveConnect">
+            <title>Bulk create product images by path</title>
+            <acl>linnLive/createProductImagesByPath</acl>
+          </createProductImagesByPath>
+          <createProductImagesByUrl translate="title" module="linnLiveConnect">
+            <title>Bulk create product images by path</title>
+            <acl>linnLive/createProductImagesByUrl</acl>
+          </createProductImagesByUrl>
+          <updateProductImages translate="title" module="linnLiveConnect">
+            <title>Bulk update product images</title>
+            <acl>linnLive/updateProductImages</acl>
+          </updateProductImages>
+          <deleteProductImages translate="title" module="linnLiveConnect">
+            <title>Bulk delete product images</title>
+            <acl>linnLive/deleteProductImages</acl>
+          </deleteProductImages>
+          <disableIndexing translate="title" module="linnLiveConnect">
+            <title>Set manual indexing mode</title>
+            <acl>linnLive/disableIndexing</acl>
+          </disableIndexing>
+          <restoreIndexingById translate="title" module="linnLiveConnect">
+            <title>Restore indexing mode</title>
+            <acl>linnLive/restoreIndexingById</acl>
+          </restoreIndexingById>
+
+        </methods>
+
+        <faults module="linnLiveConnect">
+          <data_invalid>
+            <code>100</code>
+            <message>Invalid data provided to Magento extension for creating Variation / Product with options. Check attributes/variations in LinnLive Magento configurator if they do match the ones on the back-end, or you can check if the SKU's are not already listed on Magento.</message>
+          </data_invalid>
+          <product_type_not_exists>
+            <code>101</code>
+            <message>Product type is not allowed to be listed in the current list of allowed products/types.</message>
+          </product_type_not_exists>
+          <product_attribute_set_not_exists>
+            <code>102</code>
+            <message>Product attribute set was not found on Magento.</message>
+          </product_attribute_set_not_exists>
+          <product_attribute_set_not_valid>
+            <code>103</code>
+            <message>Product attribute set was not added to catalogue.</message>
+          </product_attribute_set_not_valid>
+          <products_not_suitable>
+            <code>104</code>
+            <message>Product is not suitable to be used in Variations / Products with options.</message>
+          </products_not_suitable>
+          <configurable_creating_error>
+            <code>105</code>
+            <message>There was an error, while trying to create Variation / Product with options. Check attributes/variations in LinnLive Magento configurator if they do match the ones on the back-end or you can check if the SKU's are not already listed on Magento.</message>
+          </configurable_creating_error>
+          <wrong_version>
+            <code>106</code>
+            <message>Wrong extended API version. Update your Magento LinnLive Extension. In order to do this, go to your Magento Admin Panel > System  > Magento Connect Manager > click on “Check for Upgrades”, and upgrade your LinnLive Connect extension to the latest version.</message>
+          </wrong_version>
+          <attribute_not_exists>
+            <code>107</code>
+            <message>Attribute was not found. Check if you have updated your Magento configurator attributes by clicking on the “Update” button on the top of the screen.</message>
+          </attribute_not_exists>
+          <product_not_exists>
+            <code>108</code>
+            <message>Product not found, it might have been deleted from Magento. If you are sure that the product is there, you can try to re-link your item by SKU in order to update it properly.</message>
+          </product_not_exists>
+          <store_not_exists>
+            <code>109</code>
+            <message>There was no Magento store found with this ID. Double-check the store ID and the extended property name/value if needed.</message>
+          </store_not_exists>
+          <unsupported_edition>
+            <code>110</code>
+            <message>Unsupported version of Magento. This error message can occur if you are using any other Magento editions, that we do not support or Magento versions that are less than 1.7.0.2. NOTE: We do support Magento Enterprise and Magento Community.</message>
+          </unsupported_edition>
+          <filters_invalid>
+            <code>111</code>
+            <message>Upon trying to reach Magento extension, inappropriate search filters were assigned to the template.</message>
+          </filters_invalid>
+          <version_not_specified>
+            <code>112</code>
+            <message>Unsupported version of Magento. This error message can occur if you are using any other Magento editions, that we do not support or Magento versions that are less than 1.7.0.2. NOTE: We do support Magento Enterprise and Magento Community.</message>
+          </version_not_specified>
+          <invalid_variation_attribute>
+            <code>113</code>
+            <message>Invalid attributes provided to Magento extension for creating Variation / Product with options. Check attributes/variations in LinnLive Magento configurator if they do exist/match the ones on the back-end.</message>
+          </invalid_variation_attribute>
+          <image_not_exists>
+            <code>114</code>
+            <message>Image not found, it might have been deleted from Magento.</message>
+          </image_not_exists>
+        </faults>
+      </linnLive>
+    </resources>
+    <acl>
+      <resources>
+        <linnLive translate="title" module="linnLiveConnect">
+          <title>LinnLive</title>
+          <create translate="title" module="linnLiveConnect">
+            <title>Create product</title>
+          </create>
+          <update translate="title" module="linnLiveConnect">
+            <title>Update product</title>
+          </update>
+          <attributeOptions translate="title" module="linnLiveConnect">
+            <title>Get attributes by attribute set ID</title>
+          </attributeOptions>
+          <storesList translate="title" module="linnLiveConnect">
+            <title>Retrieve list of installed stores</title>
+          </storesList>
+          <createImage translate="title" module="linnLiveConnect">
+            <title>Create image</title>
+          </createImage>
+          <updateImage translate="title" module="linnLiveConnect">
+            <title>Update image</title>
+          </updateImage>
+          <getStoreCode translate="title" module="linnLiveConnect">
+            <title>Get current store code</title>
+          </getStoreCode>
+          <configurableCreate translate="title" module="linnLiveConnect">
+            <title>Create configurable product</title>
+          </configurableCreate>
+          <configurableUpdate translate="title" module="linnLiveConnect">
+            <title>Update configurable product</title>
+          </configurableUpdate>
+          <productList translate="title" module="linnLiveConnect">
+            <title>Retrieve products list by filters</title>
+          </productList>
+          <deleteAssigned translate="title" module="linnLiveConnect">
+            <title>Remove assigned item from inventory</title>
+          </deleteAssigned>
+          <getProductStoreURL translate="title" module="linnLiveConnect">
+            <title>Get product URL from Magento</title>
+          </getProductStoreURL>
+          <updatePriceBulk translate="title" module="linnLiveConnect">
+            <title>Update products in bulk</title>
+          </updatePriceBulk>
+          <getGeneralInfo translate="title" module="linnLiveConnect">
+            <title>Get information about current magento settings</title>
+          </getGeneralInfo>
+          <checkProducts translate="title" module="linnLiveConnect">
+            <title>Check product sku</title>
+          </checkProducts>
+          <createSimpleProducts translate="title" module="linnLiveConnect">
+            <title>Bulk create products</title>
+          </createSimpleProducts>
+          <createConfigurableProducts translate="title" module="linnLiveConnect">
+            <title>Bulk create configurable products</title>
+          </createConfigurableProducts>
+          <updateSimpleProducts translate="title" module="linnLiveConnect">
+            <title>Bulk update products</title>
+          </updateSimpleProducts>
+          <updateConfigurableProducts translate="title" module="linnLiveConnect">
+            <title>Bulk update configurable products</title>
+          </updateConfigurableProducts>
+          <deleteProducts translate="title" module="linnLiveConnect">
+            <title>Bulk delete products</title>
+          </deleteProducts>
+          <createRelatedProducts translate="title" module="linnLiveConnect">
+            <title>Bulk create related products</title>
+          </createRelatedProducts>
+          <deleteRelatedProducts translate="title" module="linnLiveConnect">
+            <title>Bulk delete related products</title>
+          </deleteRelatedProducts>
+          <createProductImages translate="title" module="linnLiveConnect">
+            <title>Bulk create product images</title>
+          </createProductImages>
+          <createProductImagesByPath translate="title" module="linnLiveConnect">
+            <title>Bulk create product images</title>
+          </createProductImagesByPath>
+          <createProductImagesByUrl translate="title" module="linnLiveConnect">
+            <title>Bulk create product images</title>
+          </createProductImagesByUrl>          
+          <updateProductImages translate="title" module="linnLiveConnect">
+            <title>Bulk update product images</title>
+          </updateProductImages>
+          <deleteProductImages translate="title" module="linnLiveConnect">
+            <title>Bulk delete product images</title>
+          </deleteProductImages>
+          <disableIndexing translate="title" module="linnLiveConnect">
+            <title>Set manual indexing mode</title>
+          </disableIndexing>
+          <restoreIndexingById translate="title" module="linnLiveConnect">
+            <title>Restore indexing mode</title>
+          </restoreIndexingById>
+        </linnLive>
+      </resources>
+    </acl>
+    <v2>
+      <resources_function_prefix>
+        <linnLive>linnLive</linnLive>
+      </resources_function_prefix>
+    </v2>
+  </api>
+</config>
