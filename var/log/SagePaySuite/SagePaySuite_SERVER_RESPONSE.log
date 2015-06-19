@@ -1,0 +1,8 @@
+2015-06-11 12:14:26.000000 (1434021266.2145) DEBUG: Status=OK
+StatusDetail=Transaction ABORTED successfully
+RedirectURL=https://www.mydigibits.co.uk/sgps/ServerPayment/abortredirect/storeid/1/qid/122/?SID=482g8v0t95gc3pqch78aofs362
+
+2015-06-16 11:07:42.000000 (1434449262.6887) DEBUG: Status=OK
+StatusDetail=Transaction ABORTED successfully
+RedirectURL=https://www.mydigibits.co.uk/sgps/ServerPayment/abortredirect/storeid/1/qid/128/?SID=sivnjmc48lic7tqlsmoak6ca01
+

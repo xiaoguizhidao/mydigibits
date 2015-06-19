@@ -1,0 +1,29 @@
+2015-06-11 12:14:26.000000 (1434021266.1912) DEBUG: Array
+(
+    [VPSProtocol] => 3.00
+    [TxType] => PAYMENT
+    [VendorTxCode] => 100000046-2015-06-11-11-13-59
+    [VPSTxId] => {36E1FD80-E2C1-D4A7-D67C-A4CAAC267581}
+    [Status] => ABORT
+    [StatusDetail] => 2013 : The Transaction was cancelled by the customer.
+    [GiftAid] => 0
+    [VPSSignature] => 85B0DDBD4C72D04385A8C9DB726FFFF0
+)
+
+2015-06-16 11:07:42.000000 (1434449262.6608) DEBUG: Array
+(
+    [VPSProtocol] => 3.00
+    [TxType] => PAYMENT
+    [VendorTxCode] => 100000047-2015-06-16-09-33-00
+    [VPSTxId] => {CF406E72-ACE2-5CFE-C5FE-FE1042C2B6D5}
+    [Status] => ABORT
+    [StatusDetail] => 2008 : The Transaction timed-out.
+    [AVSCV2] => DATA NOT CHECKED
+    [AddressResult] => NOTPROVIDED
+    [PostCodeResult] => NOTPROVIDED
+    [CV2Result] => NOTPROVIDED
+    [GiftAid] => 0
+    [3DSecureStatus] => NOTCHECKED
+    [VPSSignature] => BD844D94A64496C7B1EC3FB16C326F9D
+)
+

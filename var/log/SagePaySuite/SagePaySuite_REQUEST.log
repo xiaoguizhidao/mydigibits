@@ -1,0 +1,114 @@
+2015-06-11 12:13:59.000000 (1434021239.6132) DEBUG: https://live.sagepay.com/gateway/service/vspserver-register.vsp
+2015-06-11 12:13:59.000000 (1434021239.6141) DEBUG: User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36
+2015-06-11 12:13:59.000000 (1434021239.6144) DEBUG: Ebizmarts/SagePaySuite CE(v3.0.23)
+2015-06-11 12:13:59.000000 (1434021239.6147) DEBUG: Array
+(
+    [AllowGiftAid] => 0
+    [Amount] => 11.99
+    [ApplyAVSCV2] => 0
+    [Basket] => 2:[SDSDXN-016G-G46] Sandisk16GBExtremeSDSDHCMemoryCardClass10UHS-1U360MBs:1:11.99:0.00:11.99:11.99:FreeShipping:1:0:0:0:0
+    [BillingAddress1] => 3 Stable Mews
+    [BillingAddress2] => Off Station Rd
+    [BillingCity] => Woodville
+    [BillingCountry] => GB
+    [BillingFirstnames] => Paul
+    [BillingPhone] => 447961094150
+    [BillingPostCode] => DE11 7DD
+    [BillingSurname] => Gordon
+    [ContactNumber] => 447961094150
+    [Currency] => GBP
+    [CustomerEMail] => sales@720digital.com
+    [CustomerXML] => <?xml version="1.0"?><customer><customerMobilePhone><![CDATA[+447961094150]]></customerMobilePhone><previousCust>0</previousCust></customer>
+    [DeliveryAddress1] => 3 Stable Mews
+    [DeliveryAddress2] => Off Station Rd
+    [DeliveryCity] => Woodville
+    [DeliveryCountry] => GB
+    [DeliveryFirstnames] => Paul
+    [DeliveryPhone] => 447961094150
+    [DeliveryPostCode] => DE11 7DD
+    [DeliverySurname] => Gordon
+    [Description] => Purchase of products mydigibits.co.uk User: sales@720digital.com
+    [FailureURL] => https://www.mydigibits.co.uk/sgps/ServerPayment/failure/storeid/1/qid/122/?SID=482g8v0t95gc3pqch78aofs362
+    [Language] => en
+    [NotificationURL] => https://www.mydigibits.co.uk/sgps/ServerPayment/notify/storeid/1/qid/122/?SID=482g8v0t95gc3pqch78aofs362
+    [Profile] => NORMAL
+    [RedirectURL] => https://www.mydigibits.co.uk/sgps/payment/redirect/storeid/1/qid/122/?SID=482g8v0t95gc3pqch78aofs362
+    [ReferrerID] => 01bf51f9-0dcd-49dd-a07a-3b1f918c77d7
+    [SuccessURL] => https://www.mydigibits.co.uk/sgps/ServerPayment/success/storeid/1/qid/122/?SID=482g8v0t95gc3pqch78aofs362
+    [TxType] => PAYMENT
+    [User] => sales@720digital.com
+    [VPSProtocol] => 3.00
+    [Vendor] => Fmceltd
+    [VendorTxCode] => 100000046-2015-06-11-11-13-59
+    [Website] => UK Store
+)
+
+2015-06-11 12:13:59.000000 (1434021239.9443) ALERT: 200
+2015-06-11 12:13:59.000000 (1434021239.9446) ALERT: https://live.sagepay.com/gateway/service/vspserver-register.vsp
+2015-06-11 12:13:59.000000 (1434021239.945) DEBUG: Array
+(
+    [VPSProtocol] => 3.00
+    [Status] => OK
+    [StatusDetail] => 2014 : The Transaction was Registered Successfully.
+    [VPSTxId] => {36E1FD80-E2C1-D4A7-D67C-A4CAAC267581}
+    [SecurityKey] => PPEKAT2QVY
+    [NextURL] => https://live.sagepay.com/gateway/service/cardselection?vpstxid={36E1FD80-E2C1-D4A7-D67C-A4CAAC267581}
+)
+
+2015-06-16 10:33:00.000000 (1434447180.7876) DEBUG: https://live.sagepay.com/gateway/service/vspserver-register.vsp
+2015-06-16 10:33:00.000000 (1434447180.7885) DEBUG: User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36
+2015-06-16 10:33:00.000000 (1434447180.797) DEBUG: Ebizmarts/SagePaySuite CE(v3.0.23)
+2015-06-16 10:33:00.000000 (1434447180.7973) DEBUG: Array
+(
+    [AllowGiftAid] => 0
+    [Amount] => 6.49
+    [ApplyAVSCV2] => 0
+    [Basket] => 2:[SDC1016GB] Kingston16GBMicroSDHCMemoryCardSDAdapter-Class10:1:6.49:0.00:6.49:6.49:FreeShipping:1:0:0:0:0
+    [BillingAddress1] => Briketa 4-16
+    [BillingAddress2] => 
+    [BillingCity] => Minsk
+    [BillingCountry] => GB
+    [BillingFirstnames] => Mikhail
+    [BillingPhone] => 375291388270
+    [BillingPostCode] => 220003
+    [BillingSurname] => Sachyuko
+    [ContactNumber] => 375291388270
+    [Currency] => GBP
+    [CustomerEMail] => barmagloth02@gmail.com
+    [CustomerXML] => <?xml version="1.0"?><customer><customerMobilePhone><![CDATA[+375291388270]]></customerMobilePhone><previousCust>0</previousCust></customer>
+    [DeliveryAddress1] => Briketa 4-16
+    [DeliveryAddress2] => 
+    [DeliveryCity] => Minsk
+    [DeliveryCountry] => GB
+    [DeliveryFirstnames] => Mikhail
+    [DeliveryPhone] => 375291388270
+    [DeliveryPostCode] => 220003
+    [DeliverySurname] => Sachyuko
+    [Description] => Purchase of products mydigibits.co.uk User: barmagloth02@gmail.com
+    [FailureURL] => https://www.mydigibits.co.uk/sgps/ServerPayment/failure/storeid/1/qid/128/?SID=sivnjmc48lic7tqlsmoak6ca01
+    [Language] => en
+    [NotificationURL] => https://www.mydigibits.co.uk/sgps/ServerPayment/notify/storeid/1/qid/128/?SID=sivnjmc48lic7tqlsmoak6ca01
+    [Profile] => NORMAL
+    [RedirectURL] => https://www.mydigibits.co.uk/sgps/payment/redirect/storeid/1/qid/128/?SID=sivnjmc48lic7tqlsmoak6ca01
+    [ReferrerID] => 01bf51f9-0dcd-49dd-a07a-3b1f918c77d7
+    [SuccessURL] => https://www.mydigibits.co.uk/sgps/ServerPayment/success/storeid/1/qid/128/?SID=sivnjmc48lic7tqlsmoak6ca01
+    [TxType] => PAYMENT
+    [User] => barmagloth02@gmail.com
+    [VPSProtocol] => 3.00
+    [Vendor] => Fmceltd
+    [VendorTxCode] => 100000047-2015-06-16-09-33-00
+    [Website] => UK Store
+)
+
+2015-06-16 10:33:01.000000 (1434447181.2016) ALERT: 200
+2015-06-16 10:33:01.000000 (1434447181.2019) ALERT: https://live.sagepay.com/gateway/service/vspserver-register.vsp
+2015-06-16 10:33:01.000000 (1434447181.2024) DEBUG: Array
+(
+    [VPSProtocol] => 3.00
+    [Status] => OK
+    [StatusDetail] => 2014 : The Transaction was Registered Successfully.
+    [VPSTxId] => {CF406E72-ACE2-5CFE-C5FE-FE1042C2B6D5}
+    [SecurityKey] => N2VC13EAIF
+    [NextURL] => https://live.sagepay.com/gateway/service/cardselection?vpstxid={CF406E72-ACE2-5CFE-C5FE-FE1042C2B6D5}
+)
+

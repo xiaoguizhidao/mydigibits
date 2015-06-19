@@ -1,0 +1,12 @@
+2015-06-11 12:13:59.000000 (1434021239.9439) DEBUG: VPSProtocol=3.00
+Status=OK
+StatusDetail=2014 : The Transaction was Registered Successfully.
+VPSTxId={36E1FD80-E2C1-D4A7-D67C-A4CAAC267581}
+SecurityKey=PPEKAT2QVY
+NextURL=https://live.sagepay.com/gateway/service/cardselection?vpstxid={36E1FD80-E2C1-D4A7-D67C-A4CAAC267581}
+2015-06-16 10:33:01.000000 (1434447181.2006) DEBUG: VPSProtocol=3.00
+Status=OK
+StatusDetail=2014 : The Transaction was Registered Successfully.
+VPSTxId={CF406E72-ACE2-5CFE-C5FE-FE1042C2B6D5}
+SecurityKey=N2VC13EAIF
+NextURL=https://live.sagepay.com/gateway/service/cardselection?vpstxid={CF406E72-ACE2-5CFE-C5FE-FE1042C2B6D5}

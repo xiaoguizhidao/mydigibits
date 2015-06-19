@@ -1,0 +1,140 @@
+2015-06-12T17:27:37+00:00 DEBUG (7): Array
+(
+    [0] => us1.api.mailchimp.com
+    [__pid] => 1297
+)
+
+2015-06-12T17:27:37+00:00 DEBUG (7): Array
+(
+    [__pid] => 1297
+)
+
+2015-06-12T17:27:37+00:00 DEBUG (7): Array
+(
+    [0] => listsForEmail
+    [__pid] => 1297
+)
+
+2015-06-12T17:27:37+00:00 DEBUG (7): Array
+(
+    [0] => sales@fmceltd.co.uk
+    [__pid] => 1297
+)
+
+2015-06-12T17:27:38+00:00 DEBUG (7): Array
+(
+    [0] => 
+    [__pid] => 1297
+)
+
+2015-06-12T17:27:38+00:00 DEBUG (7): Array
+(
+    [0] => Error: You must specify a apikey value for the listsForEmail method, code -90
+    [__pid] => 1297
+)
+
+2015-06-12T17:27:40+00:00 DEBUG (7): Array
+(
+    [0] => us1.api.mailchimp.com
+    [__pid] => 1298
+)
+
+2015-06-12T17:27:40+00:00 DEBUG (7): Array
+(
+    [__pid] => 1298
+)
+
+2015-06-12T17:27:40+00:00 DEBUG (7): Array
+(
+    [0] => listsForEmail
+    [__pid] => 1298
+)
+
+2015-06-12T17:27:40+00:00 DEBUG (7): Array
+(
+    [0] => sales@fmceltd.co.uk
+    [__pid] => 1298
+)
+
+2015-06-12T17:27:40+00:00 DEBUG (7): Array
+(
+    [0] => 
+    [__pid] => 1298
+)
+
+2015-06-12T17:27:40+00:00 DEBUG (7): Array
+(
+    [0] => Error: You must specify a apikey value for the listsForEmail method, code -90
+    [__pid] => 1298
+)
+
+2015-06-12T17:28:13+00:00 DEBUG (7): Array
+(
+    [0] => us1.api.mailchimp.com
+    [__pid] => 1177
+)
+
+2015-06-12T17:28:13+00:00 DEBUG (7): Array
+(
+    [__pid] => 1177
+)
+
+2015-06-12T17:28:13+00:00 DEBUG (7): Array
+(
+    [0] => listsForEmail
+    [__pid] => 1177
+)
+
+2015-06-12T17:28:13+00:00 DEBUG (7): Array
+(
+    [0] => sales@fmceltd.co.uk
+    [__pid] => 1177
+)
+
+2015-06-12T17:28:13+00:00 DEBUG (7): Array
+(
+    [0] => 
+    [__pid] => 1177
+)
+
+2015-06-12T17:28:13+00:00 DEBUG (7): Array
+(
+    [0] => Error: You must specify a apikey value for the listsForEmail method, code -90
+    [__pid] => 1177
+)
+
+2015-06-12T17:28:15+00:00 DEBUG (7): Array
+(
+    [0] => us1.api.mailchimp.com
+    [__pid] => 5801
+)
+
+2015-06-12T17:28:15+00:00 DEBUG (7): Array
+(
+    [__pid] => 5801
+)
+
+2015-06-12T17:28:15+00:00 DEBUG (7): Array
+(
+    [0] => listsForEmail
+    [__pid] => 5801
+)
+
+2015-06-12T17:28:15+00:00 DEBUG (7): Array
+(
+    [0] => sales@fmceltd.co.uk
+    [__pid] => 5801
+)
+
+2015-06-12T17:28:15+00:00 DEBUG (7): Array
+(
+    [0] => 
+    [__pid] => 5801
+)
+
+2015-06-12T17:28:15+00:00 DEBUG (7): Array
+(
+    [0] => Error: You must specify a apikey value for the listsForEmail method, code -90
+    [__pid] => 5801
+)
+
