@@ -136,7 +136,7 @@ Product view
 		
 		 <reference name="head">
 		 	<action method="addCss"><stylesheet>css/megnor/cloud-lightbox-zoom.css</stylesheet></action>		 
-		 	<action method="addJs"><script>megnor/cloud-zoom.1.0.2.min.js</script></action>	
+		 	<action method="addJs"><script>megnor/cloud-zoom.1.0.2.js</script></action>	
 		 	<action method="addJs"><script>megnor/jquery.colorbox.min.js</script></action>
 		 </reference>
 		
